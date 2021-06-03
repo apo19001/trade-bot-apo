@@ -1,0 +1,17 @@
+import pandas as pd
+import csv
+
+
+def loadfile(filename):
+    data = []
+    with open(filename, newline='') as f:
+        reader = csv.reader(f)
+        data = [tuple(row) for row in reader]
+    return data
+
+"""
+data = pd.read_csv('TSLA.csv')
+df = pd.DataFrame(data, columns= ['Date', 'Close'])
+"""
+print(loadfile('TSLA.csv'))
+
