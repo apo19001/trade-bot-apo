@@ -35,6 +35,7 @@ r value (how well the line fits the data I have).
 * I used python 3.8.5.
 
 ## Python libaries used
+* pip (our package manager)
 * pandas
 * csv
 * numpy
@@ -42,14 +43,22 @@ r value (how well the line fits the data I have).
 
 
 # Useful Websites
-* [TSLA data] (https://www.marketwatch.com/investing/stock/TSLA/download-data?siteid=mktw&date=7%2F1%2F2021&x=16&y=3)
+* [TSLA data](https://www.marketwatch.com/investing/stock/TSLA/download-data?siteid=mktw&date=7%2F1%2F2021&x=16&y=3)
 * [grading our regressiom line]( https://www.kite.com/python/answers/how-to-calculate-r-squared-with-numpy-in-python)
 * [export csv file to list](https://stackoverflow.com/questions/24662571/python-import-csv-to-list)
-* [Line of best fit analysis] (https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html)
-* [How to display line of best fit] (https://www.kite.com/python/answers/how-to-plot-a-linear-regression-line-on-a-scatter-plot-in-python)
+* [Line of best fit analysis](https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html)
+* [How to display line of best fit](https://www.kite.com/python/answers/how-to-plot-a-linear-regression-line-on-a-scatter-plot-in-python)
+
+## alpaca info
+* [code examples for alpaca](https://github.com/alpacahq/alpaca-trade-api-python)
+* [connect to alpaca](https://forum.alpaca.markets/t/any-help-with-this-api-error-please-trying-to-set-up-paper-trading-api/1064)
 
 # Future Work
 
-* add paper trading
 * work on finding better modeling techniques
 * show picture of stock
+* work on making it general case
+* multithreading???? make it as fast as possible
+
+# Notes
+* alpaca has request limit - find a better api?
