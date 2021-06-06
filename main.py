@@ -2,7 +2,45 @@ import pandas as pd
 import csv
 import numpy as np
 
+from datetime import datetime
+
 import matplotlib.pyplot as plt
+
+import alpaca_trade_api as tdr
+from alpaca_trade_api import REST
+
+# source: https://forum.alpaca.markets/t/any-help-with-this-api-error-please-trying-to-set-up-paper-trading-api/1064
+#       :https://github.com/alpacahq/alpaca-trade-api-python
+# This function just checks if we are connected to the papertrade api we have. 
+def connect(key_id, secret_key, endpt):
+    api = tdr.REST(key_id, secret_key, endpt, api_version='v2')
+    now = datetime.now()
+    currentdate = now.strftime("%Y-%m-%d")
+
+    # make sure the account exists 
+    acc = api.get_account()
+    print(str(acc.status), currentdate)
+    return
+
+"""
+Dead testing function - checking how the api works and stuff
+def test(key_id, secret_id, endpt):
+    api = tdr.REST(key_id, secret_id, endpt, api_version='v2')
+    print(api.list_positions())
+    return
+"""
+
+def submitorder(key_id, secret_key, endpt, sym, qty):
+    api = tdr.REST(key_id, secret_key, endpt, api_version='v2')
+    api.submit_order(symbol=sym,
+                     qty=str(qty),
+                     side="buy",
+                     type="market",
+                     time_in_force="day",
+                     limit_price=None, # label these as parameters when we want to stop selling
+                     stop_price=None,
+                     client_order_id=None, order_class=None, take_profit=None, stop_loss=None, trail_price=None, trail_percent=None,
+                     notional=None)
 
 # loads all the information we want into a array of tuples
 # source: https://stackoverflow.com/questions/24662571/python-import-csv-to-list
@@ -107,7 +145,17 @@ Read parts of the column
 data = pd.read_csv('TSLA.csv')
 df = pd.DataFrame(data, columns= ['Date', 'Close'])
 """
+
 def main():
+
+    api_key = "XXXXXXXXXXXXXX"
+    secret_key = "XXXXXXXXXXXXXXXX"
+    endpt = "https://paper-api.alpaca.markets"
+
+    # if we are connected today!
+    connect(api_key, secret_key, endpt)
+
+    
     obj = loadfile('TSLA.csv')
     dates = getfilecol(obj, 'Date')
     prices = getfilecol(obj, 'Close')
@@ -115,5 +163,11 @@ def main():
     scatterplot(x_axis, prices, 'Date', 'Close')
     info(x_axis, prices)
 
+    if buyme(x_axis, prices):
+        print("Buying TSLA")
+    
+    print("TSLA is too much!")
+    #submitorder(api_key, secret_key, endpt, "TSLA", 1);
+    print("END")
     
 main()
