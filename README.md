@@ -10,7 +10,7 @@ a graph and found its regression line.
 I then graded the accuracy of the regression line by calculating its 
 r value (how well the line fits the data I have).
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/OI-9MCiRb-s)
 
 # Data Analysis Results
 
